@@ -1,0 +1,128 @@
+.body-svx {
+    display: grid;
+    grid-template-columns: auto minmax(0, 800px);
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    &:has(>:only-child) {
+        max-width: 800px;
+        grid-template-columns: 1fr;
+    }
+
+    .container-toc {
+        max-width: 400px;
+        position: sticky;
+        top: 0;
+        overflow: auto;
+        max-height: calc(100vh - var(--scroll-toc-top, 0px));
+
+        nav.toc {
+
+            .title {
+                font-variant: all-small-caps;
+                font-size: x-large;
+            }
+
+            .list {
+                list-style: none;
+                padding-left: 0;
+
+                a {
+                    text-decoration: none;
+                    color: inherit;
+                    display: block;
+                    padding-left: calc(var(--indent) * 2.5ch);
+
+                    .section {
+
+                        &::before {
+                            content: "ƒ› ";
+                        }
+                    }
+
+                    .index {
+                        word-break: break-all;
+
+                        &::after {
+                            content: " ";
+                        }
+                    }
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .container-content {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-size: larger;
+            font-weight: normal;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+
+            .section {
+
+                &::after {
+                    content: " ";
+                }
+
+                .link {
+                    text-decoration: none;
+                    color: inherit;
+
+                    &::before {
+                        content: "ƒ›";
+                    }
+
+                    *:hover>.section & {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            .index {
+                font-size: smaller;
+
+                display: none;
+
+                .with-toc & {
+                    display: inline;
+                }
+
+                &::after {
+                    content: " ";
+                }
+            }
+        }
+    }
+
+    blockquote {
+        border-left: 2px solid rgba(128, 128, 128, 0.5);
+        padding-left: 1ch;
+    }
+}
+
+@media (max-width: 1200px) {
+    .body-svx {
+        grid-template-columns: 1fr;
+        gap: 0;
+        max-width: 800px;
+
+        .container-toc {
+            max-width: initial;
+            position: initial;
+            max-height: initial;
+        }
+    }
+}

@@ -1,0 +1,3 @@
+# prompf
+
+> PROMPt + liFe = **prompf** <I p={import("../pronunciation/Pronunciation.svelte")} />(verb): to prompt the life you want
