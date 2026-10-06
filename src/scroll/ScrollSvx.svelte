@@ -21,7 +21,8 @@
     const classNameToc = "toc";
     if (el?.classList.contains(classNameToc)) return el as HTMLElement | null;
 
-    const toc = el?.querySelector(`.${classNameToc}`) as HTMLElement | null;
+    const toc = (el?.querySelector(`.${classNameToc}`) ||
+      el?.closest(`.${classNameToc}`)) as HTMLElement | null;
     toc?.style.setProperty(
       "--scroll-toc-top",
       `${toc.getBoundingClientRect().top}px`,
@@ -53,23 +54,29 @@
   onMount(() => {
     window.addEventListener("scroll", onWindow);
     window.addEventListener("resize", onWindow);
-    getElementCurrentContainer()?.addEventListener(
-      "scroll",
-      triggerOnScrollWindow,
-    );
+    document.querySelectorAll(".svx").forEach((el) => {
+      el.addEventListener("scroll", triggerOnScrollWindow);
+    });
 
     return () => {
       window.removeEventListener("scroll", onWindow);
       window.removeEventListener("resize", onWindow);
-      getElementCurrentContainer()?.removeEventListener(
-        "scroll",
-        triggerOnScrollWindow,
-      );
+      document.querySelectorAll(".svx").forEach((el) => {
+        el.removeEventListener("scroll", triggerOnScrollWindow);
+      });
     };
   });
 </script>
 
 <Style />
+
+<!-- <div
+  style="position: fixed; top: {(window.innerHeight ||
+    document.documentElement.clientHeight) - 20}px; left: {(window.innerWidth ||
+    document.documentElement.clientWidth) /
+    2 -
+    400}px; z-index: -1; border: 5px solid red;"
+></div> -->
 
 {#if showScrollToc}
   <div class="button-scroll toc">
