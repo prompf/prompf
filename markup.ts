@@ -191,7 +191,7 @@ export function svxRemarkPlugin() {
         items.forEach(({ id, index, text, children = [] }) => {
             const indent = (index?.length || 1) - 1
             buildLevel += `<li style="--indent:${indent}">`
-            if (text && id) buildLevel += `<a href="/#${id}"><span class="section"></span><span class="index">${index?.join(".")}.</span><span class="label">${text}</span></a>`
+            if (text && id) buildLevel += `<a href="{location.pathname}#${id}"><span class="section"></span><span class="index">${index?.join(".")}.</span><span class="label">${text}</span></a>`
             buildLevel += getNavLevel(children)
             buildLevel += '</li>'
         })
@@ -234,7 +234,7 @@ export function svxRemarkPlugin() {
                 children: [],
             });
 
-            preContent += `<span class="section"><a href="#${id}" class="link" title="Section link"></a></span>`;
+            preContent += `<span class="section"><a href="{location.pathname}#${id}" class="link" title="Section link"></a></span>`;
             preContent += `<span class="index">${indexCurrentToc.join(".")}.</span>`;
 
             parent.children![parent.children!.indexOf(node)] = {
@@ -307,7 +307,7 @@ export function svxRemarkPlugin() {
         let theEnd = "";
 
         if (buildToc.length > 1 || buildToc[0]?.children?.length) {
-            tocMarkup = `<div class="toc"><nav><h1 class="title"><a onclick={(event)=>{event.preventDefault();window.history.replaceState(null,"",window.location.pathname+window.location.search);event.currentTarget.closest(".svx")?.scrollIntoView();}} href="/">Prompfs</a></h1>${getNavLevel(buildToc)}</nav></div>`;
+            tocMarkup = `<div class="toc"><nav><h1 class="title"><a onclick={(event)=>{event.preventDefault();window.history.replaceState(null,"",window.location.pathname+window.location.search);event.currentTarget.closest(".svx")?.scrollIntoView();}} href="/">Contents</a></h1>${getNavLevel(buildToc)}</nav></div>`;
             theEnd = `<div class="the-end">⁂</div>`;
         }
 
