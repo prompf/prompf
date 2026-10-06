@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import Style from "./Style.svelte";
 
-  function isTocInViewport(containerNav?: HTMLElement | null) {
+  function isSvxInViewport(containerNav?: HTMLElement | null) {
     if (!containerNav) return false;
     const containerRect = containerNav.getBoundingClientRect();
 
@@ -10,8 +10,12 @@
   }
 
   function setScrolledValueToc() {
-    const x = 50,
-      y = (window.innerHeight || document.documentElement.clientHeight) - 50;
+    const windowWidth =
+      window.innerWidth || document.documentElement.clientWidth;
+    if (windowWidth <= 1200) return;
+
+    const x = windowWidth / 2 - 400,
+      y = (window.innerHeight || document.documentElement.clientHeight) - 20;
     const el = document.elementFromPoint(x, y);
 
     const classNameToc = "toc";
@@ -20,23 +24,24 @@
     const toc = el?.querySelector(`.${classNameToc}`) as HTMLElement | null;
     toc?.style.setProperty(
       "--scroll-toc-top",
-      `${(window.innerWidth || document.documentElement.clientWidth) <= 1200 ? 0 : toc.getBoundingClientRect().top}px`,
+      `${toc.getBoundingClientRect().top}px`,
     );
   }
 
   function getElementCurrentContainer(): HTMLElement | null {
-    const x = 50,
+    const x = (window.innerWidth || document.documentElement.clientWidth) / 2,
       y = 50;
     const el = document.elementFromPoint(x, y);
 
     const classNameSvx = "svx";
     if (el?.classList.contains(classNameSvx)) return el as HTMLElement | null;
-    return el?.querySelector(`.${classNameSvx}`) as HTMLElement | null;
+    return (el?.querySelector(`.${classNameSvx}`) ||
+      el?.closest(`.${classNameSvx}`)) as HTMLElement | null;
   }
 
   const onWindow = () => {
     setScrolledValueToc();
-    showScrollToc = isTocInViewport(getElementCurrentContainer());
+    showScrollToc = isSvxInViewport(getElementCurrentContainer());
   };
 
   const triggerOnScrollWindow = () => {
