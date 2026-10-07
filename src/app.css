@@ -17,9 +17,48 @@ body {
         align-items: center;
         padding-left: 0;
 
-        .divider {
-            display: none;
+        li {
+
+            &.divider {
+                display: none;
+            }
+
+            a {
+                line-height: 1.75;
+                text-decoration: none;
+                color: inherit;
+
+                &>span:first-child {
+
+                    .active>&,
+                    :hover>& {
+                        display: none;
+
+                        &+span {
+                            display: initial;
+                        }
+                    }
+
+                    &+span {
+                        display: none;
+                    }
+                }
+
+                &.active {
+                    text-decoration: underline;
+                    text-underline-offset: 2px;
+                }
+
+                .github svg {
+                    fill: currentColor;
+                    width: 1em;
+                    height: 1em;
+                    vertical-align: middle;
+                }
+
+            }
         }
+
     }
 
     @media (min-width: 400px) {
@@ -29,45 +68,12 @@ body {
             justify-content: center;
             gap: 0.5rem;
 
-            .divider {
-                display: initial;
-            }
-        }
-    }
-
-    a {
-        line-height: 1.75;
-        text-decoration: none;
-        color: inherit;
-
-        &>span:first-child {
-
-            .active>&,
-            :hover>& {
-                display: none;
-
-                &+span {
+            li {
+                &.divider {
                     display: initial;
                 }
             }
-
-            &+span {
-                display: none;
-            }
         }
-
-        &.active {
-            text-decoration: underline;
-            text-underline-offset: 2px;
-        }
-
-        .github svg {
-            fill: currentColor;
-            width: 1em;
-            height: 1em;
-            vertical-align: middle;
-        }
-
     }
 }
 
@@ -75,7 +81,7 @@ body {
     header {
 
         text-align: center;
-        font-size: min(1em, 3vw);
+        font-size: min(0.9em, 3vw);
         line-height: 1.25;
 
         .title,

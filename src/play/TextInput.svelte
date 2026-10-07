@@ -1,19 +1,14 @@
-<div>
-    <form>
-        <textarea disabled></textarea>
-        <input type="submit" disabled />
-    </form>
-</div>
+<form>
+    <textarea disabled></textarea>
+    <input type="submit" disabled />
+</form>
 
 <style>
-    div {
-        max-width: 800px;
+    form {
+        max-width: 400px;
         margin-left: auto;
         margin-right: auto;
         margin-top: 1em;
-    }
-    form {
-        max-width: 400px;
     }
     textarea {
         width: 100%;
