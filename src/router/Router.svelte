@@ -7,7 +7,7 @@
         Router,
     } from "@svelte-router/core";
     import NotFound from "../notFound/NotFound.svelte";
-    import ThePainGame from "../thePainGame/ThePainGame.svx";
+    import TheAlignmentGame from "../theAlignmentGame/TheAlignmentGame.svx";
     import Play from "../play/Play.svx";
     import Prompf from "../../PROMPF.svx";
 </script>
@@ -24,17 +24,17 @@
                     <li>
                         <Link href="/play" activeFor="play">Play</Link>
                     </li>
-                    <li>|</li>
+                    <li class="divider">|</li>
                     <li>
-                        <Link href="/" activeFor="the-pain-game"
-                            >The Pain Game</Link
+                        <Link href="/" activeFor="the-alignment-game"
+                            >The Alignment Game</Link
                         >
                     </li>
-                    <li>|</li>
+                    <li class="divider">|</li>
                     <li>
                         <Link href="/prompf" activeFor="prompf">Prompf</Link>
                     </li>
-                    <li>|</li>
+                    <li class="divider">|</li>
                     <li>
                         <a
                             href="https://github.com/prompf/prompf"
@@ -60,8 +60,8 @@
         <Route key="play" path="/play">
             <Play />
         </Route>
-        <Route key="the-pain-game" path="/">
-            <ThePainGame />
+        <Route key="the-alignment-game" path="/">
+            <TheAlignmentGame />
         </Route>
         <Route key="prompf" path="/prompf">
             <Prompf />

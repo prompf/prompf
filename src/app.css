@@ -13,12 +13,26 @@ body {
     ul {
         list-style: none;
         display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
+        flex-direction: column;
+        align-items: center;
         padding-left: 0;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
+
+        .divider {
+            display: none;
+        }
+    }
+
+    @media (min-width: 400px) {
+        ul {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+
+            .divider {
+                display: initial;
+            }
+        }
     }
 
     a {
