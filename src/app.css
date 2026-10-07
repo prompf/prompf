@@ -9,13 +9,39 @@ body {
     margin: 0.5rem 0.5rem 0;
 }
 
+.main-nav {
+    ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding-left: 0;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &.active {
+            font-weight: bold;
+        }
+    }
+}
+
 .svx {
     header {
 
         text-align: center;
         font-size: min(1em, 3vw);
         line-height: 1.25;
-        
+
         .title,
         .subtitle,
         .author {
