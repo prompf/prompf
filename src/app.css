@@ -36,16 +36,38 @@ body {
     }
 
     a {
+        line-height: 1.75;
         text-decoration: none;
         color: inherit;
 
-        &:hover {
-            text-decoration: underline;
+        &>span:first-child {
+
+            .active>&,
+            :hover>& {
+                display: none;
+
+                &+span {
+                    display: initial;
+                }
+            }
+
+            &+span {
+                display: none;
+            }
         }
 
         &.active {
-            font-weight: bold;
+            text-decoration: underline;
+            text-underline-offset: 2px;
         }
+
+        .github svg {
+            fill: currentColor;
+            width: 1em;
+            height: 1em;
+            vertical-align: middle;
+        }
+
     }
 }
 
