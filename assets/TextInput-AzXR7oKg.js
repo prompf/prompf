@@ -1,0 +1,1 @@
+import{a as e,o as t}from"./index-CvMKgZfr.js";var n=t(`<form class="svelte-1h99nyb"><textarea disabled="" class="svelte-1h99nyb"></textarea> <input type="submit" disabled=""/></form>`);function r(t){var r=n();e(t,r)}export{r as default};
