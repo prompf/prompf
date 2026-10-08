@@ -1,7 +1,7 @@
 :root {
     color-scheme: light dark;
     font-family: system-ui, sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.5;
 }
 
@@ -9,25 +9,93 @@ body {
     margin: 0.5rem 0.5rem 0;
 }
 
+.main-nav {
+    ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-left: 0;
+
+        li {
+
+            &.divider {
+                display: none;
+            }
+
+            a {
+                line-height: 1.75;
+                text-decoration: none;
+                color: inherit;
+
+                &>span:first-child {
+
+                    .active>&,
+                    :hover>& {
+                        display: none;
+
+                        &+span {
+                            display: initial;
+                        }
+                    }
+
+                    &+span {
+                        display: none;
+                    }
+                }
+
+                &.active {
+                    text-decoration: underline;
+                    text-underline-offset: 2px;
+                }
+
+                .github svg {
+                    fill: currentColor;
+                    width: 1em;
+                    height: 1em;
+                    vertical-align: middle;
+                }
+
+            }
+        }
+
+    }
+
+    @media (min-width: 400px) {
+        ul {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+
+            li {
+                &.divider {
+                    display: initial;
+                }
+            }
+        }
+    }
+}
+
 .svx {
     header {
 
         text-align: center;
-        font-size: min(1em, 3vw);
+        font-size: min(0.9em, 3vw);
         line-height: 1.25;
 
-        h1,
-        h2,
-        h3 {
+        .title,
+        .subtitle,
+        .author {
 
             font-weight: bold;
         }
 
-        h1 {
+        .title {
             text-transform: uppercase;
         }
 
-        h3 {
+        .author {
             font-style: italic
         }
     }
@@ -74,13 +142,6 @@ body {
                         display: block;
                         padding-left: calc(var(--indent) * 2.5ch);
 
-                        .section {
-
-                            &::before {
-                                content: "ƒ› ";
-                            }
-                        }
-
                         .index {
                             word-break: break-all;
 
@@ -101,16 +162,16 @@ body {
         .content {
 
             h1,
+            h2 {
+                font-weight: normal;
+            }
+
+            h1,
             h2,
             h3,
             h4,
             h5,
             h6 {
-                font-size: larger;
-                font-weight: normal;
-                margin-top: 1.5rem;
-                margin-bottom: 0.5rem;
-
                 .section {
 
                     &::after {
@@ -120,9 +181,10 @@ body {
                     .link {
                         text-decoration: none;
                         color: inherit;
+                        font-size: 1.25rem;
 
                         &::before {
-                            content: "ƒ›";
+                            content: "§";
                         }
 
                         *:hover>.section & {
@@ -145,6 +207,10 @@ body {
                     }
                 }
             }
+
+            a:hover {
+                text-underline-offset: 2px;
+            }
         }
 
         .the-end {
@@ -153,10 +219,6 @@ body {
             line-height: 1;
         }
 
-        blockquote {
-            border-left: 2px solid rgba(128, 128, 128, 0.5);
-            padding-left: 1ch;
-        }
     }
 
     @media (max-width: 1200px) {

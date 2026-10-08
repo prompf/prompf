@@ -44,11 +44,3 @@
     <source src={ogg} type="audio/ogg" />
 </audio>
 
-<style>
-    #prompf-ipa {
-        text-decoration: none;
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-</style>
