@@ -10,6 +10,7 @@
     import TheAlignmentGame from "../theAlignmentGame/TheAlignmentGame.svx";
     import Play from "../play/Play.svx";
     import Prompf from "../../PROMPF.svx";
+    import Legal from "../legal/Legal.svelte";
 </script>
 
 <Router id="root-router">
@@ -38,13 +39,19 @@
                             ><span>✧</span><span>✦</span> Prompf</Link
                         >
                     </li>
+                    <!-- <li class="divider">|</li>
+                    <li>
+                        <Link href="/legal" activeFor="legal"
+                            ><span>🗅</span><span>🗈</span></Link
+                        >
+                    </li> -->
                     <li class="divider">|</li>
                     <li>
                         <a
                             href="https://github.com/prompf/prompf"
                             aria-label="GitHub"
                         >
-                            <span class="github">
+                            <span class="svg">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 512 512"
@@ -53,7 +60,7 @@
                                     /></svg
                                 >
                             </span>
-                            <span class="github">
+                            <span class="svg">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 512 512"
@@ -75,6 +82,9 @@
         </Route>
         <Route key="the-alignment-game" path="/">
             <TheAlignmentGame />
+        </Route>
+        <Route key="legal" path="/legal">
+            <Legal />
         </Route>
         <Route key="prompf" path="/prompf">
             <Prompf />

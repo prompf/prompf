@@ -49,7 +49,7 @@ body {
                     text-underline-offset: 2px;
                 }
 
-                .github svg {
+                .svg svg {
                     fill: currentColor;
                     width: 1em;
                     height: 1em;
@@ -61,7 +61,7 @@ body {
 
     }
 
-    @media (min-width: 400px) {
+    @media (min-width: 420px) {
         ul {
             flex-direction: row;
             flex-wrap: wrap;
